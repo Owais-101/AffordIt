@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import MobileNavbar from '@/components/MobileNavbar'
+import HeroSection from '@/components/HeroSection'
+import Description from '@/components/Description'
 
 const LandingPage = () => {
     return (
@@ -8,6 +10,8 @@ const LandingPage = () => {
 
             <Navbar />
             <MobileNavbar />
+            <HeroSection />
+            <Description />
 
         </div>
     )

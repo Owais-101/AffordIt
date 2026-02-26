@@ -11,7 +11,7 @@ const MobileNavbar = () => {
   return (
     <>
       {/* MOBILE NAVIGATION MENU */}
-      <nav className='flex items-center justify-between py-3 px-8 md:hidden border-b'>
+      <nav className=' relative flex items-center justify-between py-3 px-8 md:hidden border-b'>
 
         <h1 className='text-xl md:text-5xl font-heading '>AffordIt</h1>
         <div onClick={() => setIsOpen(!open)}>
@@ -27,7 +27,7 @@ const MobileNavbar = () => {
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className='w-full flex flex-col gap-3 py-5 px-8 border-b rounded-br-xl rounded-bl-xl font-sans'>
+            className=' absolute z-10 bg-white/70 backdrop-blur-sm w-full flex flex-col gap-3 py-5 px-8 border-b rounded-br-xl rounded-bl-xl font-sans md:hidden'>
 
             <Link className='flex gap-2 items-center'> <LayoutDashboard color="#de7728" size={19} /> Showcase</Link>
             <Link className='flex gap-2 items-center'> <TableOfContents color="#de7728" size={19} /> FAQ</Link>
