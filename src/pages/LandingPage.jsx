@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import MobileNavbar from '@/components/MobileNavbar'
 import HeroSection from '@/components/HeroSection'
 import Description from '@/components/Description'
+import TryItOut from '@/components/TryItOut'
 
 const LandingPage = () => {
     return (
@@ -12,6 +13,7 @@ const LandingPage = () => {
             <MobileNavbar />
             <HeroSection />
             <Description />
+            <TryItOut />
 
         </div>
     )

@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 const Navbar = () => {
   return (
 
-    <nav className=' justify-between items-center px-10 md:px-5 border-b py-4 hidden md:flex'>
+    <nav className=' sticky justify-between items-center px-10 md:px-5 border-b py-4 hidden md:flex'>
       <div className='flex items-center gap-10'>
         <h1 className='font-heading text-xl font-bold'>AffordIt</h1>
 
