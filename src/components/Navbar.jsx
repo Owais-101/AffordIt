@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className={`sticky top-0 z-50 justify-between items-center px-10 md:px-5 py-4 hidden md:flex transition-all duration-300
       ${scrolled
-        ? 'bg-white/60 backdrop-blur-lg border-b border-white/10 shadow-lg'
+        ? 'bg-white/60 backdrop-blur-lg border-b border-white/10 shadow-lg rounded-br-xl rounded-bl-xl'
         : 'bg-transparent border-b'
       }`}>
       <div className='flex items-center gap-10'>
