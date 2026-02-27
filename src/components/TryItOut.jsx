@@ -14,7 +14,7 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form'
-import { SignupForm } from './SignUpForm'
+// import { SignupForm } from './SignUpForm'
 import { Link } from 'react-router-dom'
 
 const schema = z.object({
