@@ -14,6 +14,8 @@ import {
     FormLabel,
     FormMessage,
 } from '@/components/ui/form'
+import { SignupForm } from './SignUpForm'
+import { Link } from 'react-router-dom'
 
 const schema = z.object({
     income: z.coerce.number().min(1, 'Income is required'),
@@ -58,6 +60,7 @@ const TryItOut = () => {
     return (
         <div className=' border bg-[linear-gradient(145deg,#ffffff08_0%,#ff832312_50%,#ffffff05_100%)] rounded-xl py-10 mx-2 mb-5 '>
             <h1 className='text-center font-sans font-bold mb-2 text-2xl lg:text-3xl text-brand'>Try It Out</h1>
+            <p className='text-center mb-4 text-fontBrand' >For more features, please <Link className='hover:text-brand transition-colors duration-300' to={'/signup'}>login</Link></p>
             <Card className='max-w-md mx-auto w-[90%]'>
                 <CardHeader>
                     <CardTitle className=' text-lg md:text-2xl text-fontBrand '>Can You Afford It?</CardTitle>
