@@ -64,7 +64,7 @@ const TryItOut = () => {
             <Card className='max-w-md mx-auto w-[90%]'>
                 <CardHeader>
                     <CardTitle className=' text-lg md:text-2xl text-fontBrand '>Can You Afford It?</CardTitle>
-                    <CardDescription className=' text-sm md:text-xl'>Enter your details to find out</CardDescription>
+                    <CardDescription className=' text-sm md:text-xl text-black'>Enter your details to find out</CardDescription>
                 </CardHeader>
 
                 <CardContent>
