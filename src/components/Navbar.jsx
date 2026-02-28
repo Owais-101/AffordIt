@@ -15,6 +15,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  
   return (
     <nav className={`sticky top-0 z-50 justify-between items-center px-10 md:px-5 py-4 hidden md:flex transition-all duration-300
       ${scrolled
@@ -24,7 +25,7 @@ const Navbar = () => {
       <div className='flex items-center gap-2'>
 
         <div className='h-8 w-8 flex items-center justify-center'>
-          <img src={logo} className='object-fit' alt="" />
+          <img src={logo} className='object-contain' alt="" />
         </div>
         <h1 className='font-heading text-xl font-bold'>AffordIt</h1>
 

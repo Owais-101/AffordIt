@@ -14,10 +14,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import signUpPhoto from '../assets/images/sign-up.png';
+import author from '../assets/images/author.png';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, signInWithGoogle } from '@/lib/firebase';
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import MobileNavbar from "@/components/MobileNavbar";
+import { Marquee } from "@/components/shadcn-space/animations/marquee";
+
 
 
 const schema = z.object({
@@ -77,124 +81,168 @@ export function Signup({ className, ...props }) {
     }
   }
 
+  const quotes = [
+    {
+      quote: "A budget is telling your money where to go instead of wondering where it went.",
+      author: "John C. Maxwell",
+      logo: author
+    },
+    {
+      quote: "Do not save what is left after spending, but spend what is left after saving.",
+      author: "Warren Buffett",
+      logo: author
+    },
+    {
+      quote: "Financial freedom is available to those who learn about it and work for it.",
+      author: "Robert Kiyosaki",
+      logo: author
+    },
+    {
+      quote: "The art is not in making money, but in keeping it.",
+      author: "Dilian James",
+      logo: author
+    },
+    {
+      quote: "It's not how much money you make, but how much money you keep.",
+      author: "Maxwell",
+      logo: author
+    }
+  ]
+
+
   return (
-    <div className={cn("hero-bg flex flex-col h-screen px-5 lg:px-48 justify-center gap-6", className)} {...props}>
-      <Card className="overflow-hidden p-0">
-        <CardContent className="grid p-0 md:grid-cols-2">
+    <>
+      <Navbar />
+      <MobileNavbar />
+      <div className={cn("hero-bg flex flex-col h-screen px-5 lg:px-48 justify-center gap-6", className)} {...props}>
+        <Card className="overflow-hidden p-0">
+          <CardContent className="grid p-0 md:grid-cols-2">
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8 flex flex-col gap-4">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8 flex flex-col gap-4">
 
-              {/* Heading */}
-              <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-bold">Create your account</h1>
-                <p className="text-muted-foreground text-sm">
-                  Enter your details below to create your account
-                </p>
-              </div>
-
-              {/* Email */}
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="m@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Password */}
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Confirm Password */}
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <FormControl>
-                      <Input type="password" placeholder="••••••••" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Submit */}
-              <Button type="submit" className="w-full">
-                {loading ? 'Creating Account...' : 'Create Account'}
-              </Button>
-
-              {error && <span className="bg-red-500/10 text-sm text-center py-1 rounded-sm text-red-400" >{error}</span>}
-
-              {/* Divider */}
-              <div className="relative text-center text-sm">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t" />
+                {/* Heading */}
+                <div className="flex flex-col items-center gap-2 text-center">
+                  <h1 className="text-2xl font-bold">Create your account</h1>
+                  <p className="text-muted-foreground text-sm">
+                    Enter your details below to create your account
+                  </p>
                 </div>
-                <span className="bg-card relative z-10 px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
 
-              {/* Google Button */}
-              <Button onClick={handleGoogle} variant="outline" type="button" className="w-full flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
-                  <path
-                    d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
-                    fill="currentColor"
-                  />
-                </svg>
-                Sign up with Google
-              </Button>
+                {/* Email */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="m@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Sign In Link */}
-              <p className="text-center text-sm text-muted-foreground">
-                Already have an account?{" "}
-                <Link to="/login" className="no-underline text-brand hover:text-subBrand">
-                  Sign In
-                </Link>
-              </p>
+                {/* Password */}
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" placeholder="••••••••" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-            </form>
-          </Form>
+                {/* Confirm Password */}
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input type="password" placeholder="••••••••" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-          {/* Right Side Image */}
-          <div className="bg-muted relative hidden md:block">
-            <img
-              src={signUpPhoto}
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
-          </div>
+                {/* Submit */}
+                <Button type="submit" className="w-full">
+                  {loading ? 'Creating Account...' : 'Create Account'}
+                </Button>
 
-        </CardContent>
-      </Card>
+                {error && <span className="bg-red-500/10 text-sm text-center py-1 rounded-sm text-red-400" >{error}</span>}
 
-      <p className="text-center text-sm text-muted-foreground px-6">
-        By clicking continue, you agree to our{" "}
-        <a href="#" className="underline underline-offset-4 hover:text-primary">Terms of Service</a>{" "}
-        and{" "}
-        <a href="#" className="underline underline-offset-4 hover:text-primary">Privacy Policy</a>.
-      </p>
-    </div>
+                {/* Divider */}
+                <div className="relative text-center text-sm">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t" />
+                  </div>
+                  <span className="bg-card relative z-10 px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+
+                {/* Google Button */}
+                <Button onClick={handleGoogle} variant="outline" type="button" className="w-full flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
+                    <path
+                      d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Sign up with Google
+                </Button>
+
+                {/* Sign In Link */}
+                <p className="text-center text-sm text-muted-foreground">
+                  Already have an account?{" "}
+                  <Link to="/login" className="no-underline text-brand hover:text-subBrand">
+                    Sign In
+                  </Link>
+                </p>
+
+              </form>
+            </Form>
+
+            {/* Right Side Image */}
+            <div className="bg-white border-l-2 relative hidden md:block bg-linear-to-r from-amber-500 via-orange-500 to-red-500">
+
+              <Marquee pauseOnHover className='[--duration:20s]'>
+                {quotes.map((quote, idx) => (
+                  <div key={idx} className="w-77 rounded-xl  py-2 px-4 mt-44 bg-white" >
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-8 h-8rounded-full flex justify-center items-center">
+                        <img src={quote.logo} className="object-contain" alt="" />
+                      </div>
+                      <p className="font-light px-2 py-1 rounded-xl bg-[#ff832320] border-0 text-brand">{quote.author}</p>
+                    </div>
+                    <h2 className="text-black">"{quote.quote}"</h2>
+                  </div>
+                ))}
+              </Marquee>
+
+            </div>
+
+          </CardContent>
+        </Card>
+
+        <p className="text-center text-sm text-muted-foreground px-6">
+          By clicking continue, you agree to our{" "}
+          <a href="#" className="underline underline-offset-4 hover:text-primary">Terms of Service</a>{" "}
+          and{" "}
+          <a href="#" className="underline underline-offset-4 hover:text-primary">Privacy Policy</a>.
+        </p>
+      </div>
+    </>
   )
 }
+
