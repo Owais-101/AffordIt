@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from './ui/button'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
+import logo from '../assets/images/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -20,10 +21,14 @@ const Navbar = () => {
         ? 'bg-white/60 backdrop-blur-lg border-b border-white/10 shadow-lg rounded-br-xl rounded-bl-xl'
         : 'bg-transparent border-b'
       }`}>
-      <div className='flex items-center gap-10'>
+      <div className='flex items-center gap-2'>
+
+        <div className='h-8 w-8 flex items-center justify-center'>
+          <img src={logo} className='object-fit' alt="" />
+        </div>
         <h1 className='font-heading text-xl font-bold'>AffordIt</h1>
 
-        <div className='text-sm font-sans flex gap-5 text-black/70'>
+        <div className='text-sm font-sans flex gap-5 text-black/70 md:ml-5 lg:ml-14'>
           <Link to="/showcase" className="hover:text-black transition-colors">Showcase</Link>
           <Link to="/docs" className="hover:text-black transition-colors">Documentation</Link>
           <Link to="/faq" className="hover:text-black transition-colors">FAQ</Link>

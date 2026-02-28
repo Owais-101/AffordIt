@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
+import logo from '../assets/images/logo.png'
 
 const MobileNavbar = () => {
 
@@ -26,8 +27,12 @@ const MobileNavbar = () => {
           ? 'bg-white/60 backdrop-blur-lg border-white/10 shadow-lg rounded-br-xl rounded-bl-xl'
           : 'bg-transparent'
         }`}>
-
-        <h1 className='text-xl md:text-5xl font-heading'>AffordIt</h1>
+        <div className='flex items-center gap-2'>
+          <div className='h-8 w-8 flex items-center justify-center'>
+            <img src={logo} className='object-fit' alt="" />
+          </div>
+          <h1 className='text-xl md:text-5xl font-heading'>AffordIt</h1>
+        </div>
         <div onClick={() => setIsOpen(!open)}>
           {open
             ? <X className='border p-1 rounded-md' color="#de7728" size={28} />
