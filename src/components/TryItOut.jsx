@@ -26,9 +26,10 @@ const schema = z.object({
     path: ['expenses'],
 })
 
-const TryItOut = () => {
-    const [savingPercent, setSavingPercent] = useState(20)
-    const [result, setResult] = useState(null)
+const TryItOut = ({ dashboard }) => {
+
+    const [result, setResult] = useState(null);
+
 
     const form = useForm({
         resolver: zodResolver(schema),
@@ -39,22 +40,12 @@ const TryItOut = () => {
         },
     })
 
+    const itemPrice = form.watch("itemPrice");
+
     const onSubmit = (data) => {
-        const disposable = data.income - data.expenses
-        const canAfford = data.itemPrice <= disposable
-        const monthsToSave = canAfford
-            ? 0
-            : Math.ceil(data.itemPrice / (disposable * (savingPercent / 100)))
-
-        setResult({ canAfford, disposable, monthsToSave, itemPrice: data.itemPrice })
-    }
-
-    const handleSliderChange = (val) => {
-        setSavingPercent(val[0])
-        if (result && !result.canAfford) {
-            const monthsToSave = Math.ceil(result.itemPrice / (result.disposable * (val[0] / 100)))
-            setResult(prev => ({ ...prev, monthsToSave }))
-        }
+        const disposable = data.income - data.expenses;
+        const canAfford = data.itemPrice <= disposable;
+        setResult({ canAfford, disposable, itemPrice: data.itemPrice });
     }
 
     return (
@@ -62,10 +53,17 @@ const TryItOut = () => {
         <>
             <Card className={`max-w-md w-[90%] `}>
                 <CardHeader>
-                    <h1 className='text-center font-sans font-bold text-md lg:text-2xl text-brand'>Try It Out</h1>
-                    <p className='text-center mb-4 text-fontBrand text-sm' >For more features, please <Link className='hover:text-brand transition-colors duration-300' to={'/signup'}>login</Link></p>
-                    <CardTitle className=' text-md md:text-lg text-fontBrand '>Can You Afford It?</CardTitle>
-                    <CardDescription className=' text-sm md:text-md  text-black'>Enter your details to find out</CardDescription>
+                    {dashboard
+                        ?
+                        <h1 className='text-xl text-brand text-center font-semibold border-b pb-1' >Check or Add your item</h1>
+                        :
+                        <>
+                            <h1 className='text-center font-sans font-bold text-md lg:text-2xl text-brand'>Try It Out</h1>
+                            <p className='text-center mb-4 text-fontBrand text-sm' >For more features, please <Link className='hover:text-brand transition-colors duration-300' to={'/signup'}>login</Link></p>
+                            <CardTitle className=' text-md md:text-lg text-fontBrand '>Can You Afford It?</CardTitle>
+                            <CardDescription className=' text-sm md:text-md  text-black'>Enter your details to find out</CardDescription>
+                        </>
+                    }
                 </CardHeader>
 
                 <CardContent>
@@ -114,44 +112,32 @@ const TryItOut = () => {
                                 )}
                             />
 
-                            {/* Slider - only shows after failed result */}
-                            {result && !result.canAfford && (
-                                <div className='flex flex-col gap-2'>
-                                    <FormLabel>Saving Rate: {savingPercent}% of disposable income</FormLabel>
-                                    <Slider
-                                        min={10}
-                                        max={100}
-                                        step={5}
-                                        value={[savingPercent]}
-                                        onValueChange={handleSliderChange}
-                                    />
-                                </div>
-                            )}
-
-                            <Button type='submit' className='w-full'>
-                                Check Affordability
-                            </Button>
-
                             {/* Result */}
                             {result && (
-                                <div className={`rounded-lg p-4 text-center ${result.canAfford ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                                <div className={`rounded-lg p-4 text-center ${result.canAfford ? 'bg-green-300/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                                     {result.canAfford ? (
                                         <>
-                                            <p className='text-xl font-bold'>✅ You can afford it!</p>
-                                            <p className='text-sm mt-1'>You have ${result.disposable} disposable income this month.</p>
+                                            <p className='text-sm font-semibold'>✅ You can afford it, Check another</p>
                                         </>
                                     ) : (
                                         <>
-                                            <p className='text-xl font-bold'>❌ You can't afford it yet.</p>
-                                            <p className='text-sm mt-1'>Your disposable income is ₹{result.disposable}.</p>
-                                            <p className='text-sm mt-1'>
-                                                Saving <strong>{savingPercent}%</strong> monthly, you'll afford it in{' '}
-                                                <strong>{result.monthsToSave} month{result.monthsToSave > 1 ? 's' : ''}</strong>.
-                                            </p>
+                                            <p className='text-sm font-semibold'> ❌ You can't afford it yet.</p>
                                         </>
                                     )}
                                 </div>
                             )}
+
+                            {result && !result.canAfford && Number(itemPrice) > result.disposable
+                                ? <Link to={'/dashboard/calculator'} >
+                                    <Button type='submit' variant='primaryBtn' className='w-full'>
+                                        Add Item to Tracker
+                                    </Button>
+                                </Link>
+                                : <Button type='submit' variant='primaryBtn' className='w-full'>
+                                    Check Affordability
+                                </Button>
+                            }
+
 
                         </form>
                     </Form>

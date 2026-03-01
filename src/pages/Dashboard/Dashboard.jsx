@@ -1,10 +1,15 @@
-import CalculatorPro from '@/components/CalculatorPro';
+import CalculatorDashboard from '@/components/dashboard-calculator/BasicDetails';
+import CalculatorPro from '@/components/dashboard-calculator/BasicDetails';
 import LaptopNav from '@/components/dashboard/LaptopNav';
 import MobileNav from '@/components/dashboard/MobileNav';
+import TryItOut from '@/components/TryItOut';
 import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
+
+
 
   return (
     <div className='h-screen flex flex-col bg-linear-to-r from-amber-500 via-orange-500 to-red-500'>
@@ -25,20 +30,20 @@ const Dashboard = () => {
                 {/* image  */}
               </div>
               <div>
-                <h2 className=' text-md md:text-xl text-brand font-'>Owais Ali</h2>
+                <h2 className=' text-md md:text-xl text-brand '>Owais Ali</h2>
                 <p className='text-black/70 text-sm md:text-md'>owaisali5371@gmail.com</p>
               </div>
             </div>
 
             <div>
               <Link to={'/dashboard/calculator'}>
-                <Button variant='primaryBtn' className='lg:h-12 md:h-11 mt-5 md:mt-0 mx-auto block rounded-full'>Add a New Item</Button>
+                <Button variant='primaryBtn' className='lg:h-12 md:h-11 mt-5 md:mt-0 mx-auto  rounded-full flex items-center'> <Plus /> Add a New Item</Button>
               </Link>
             </div>
           </div>
 
           <div>
-            <CalculatorPro />
+            <TryItOut dashboard={true} />
           </div>
 
         </div>
