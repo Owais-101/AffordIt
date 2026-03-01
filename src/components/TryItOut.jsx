@@ -58,13 +58,14 @@ const TryItOut = () => {
     }
 
     return (
-        <div className=' border bg-[linear-gradient(145deg,#ffffff08_0%,#ff832312_50%,#ffffff05_100%)] rounded-xl py-10 mx-2 mb-5 '>
-            <h1 className='text-center font-sans font-bold mb-2 text-2xl lg:text-3xl text-brand'>Try It Out</h1>
-            <p className='text-center mb-4 text-fontBrand' >For more features, please <Link className='hover:text-brand transition-colors duration-300' to={'/signup'}>login</Link></p>
-            <Card className='max-w-md mx-auto w-[90%]'>
+
+        <>
+            <Card className={`max-w-md w-[90%] `}>
                 <CardHeader>
-                    <CardTitle className=' text-lg md:text-2xl text-fontBrand '>Can You Afford It?</CardTitle>
-                    <CardDescription className=' text-sm md:text-xl text-black'>Enter your details to find out</CardDescription>
+                    <h1 className='text-center font-sans font-bold text-md lg:text-2xl text-brand'>Try It Out</h1>
+                    <p className='text-center mb-4 text-fontBrand text-sm' >For more features, please <Link className='hover:text-brand transition-colors duration-300' to={'/signup'}>login</Link></p>
+                    <CardTitle className=' text-md md:text-lg text-fontBrand '>Can You Afford It?</CardTitle>
+                    <CardDescription className=' text-sm md:text-md  text-black'>Enter your details to find out</CardDescription>
                 </CardHeader>
 
                 <CardContent>
@@ -118,8 +119,8 @@ const TryItOut = () => {
                                 <div className='flex flex-col gap-2'>
                                     <FormLabel>Saving Rate: {savingPercent}% of disposable income</FormLabel>
                                     <Slider
-                                        min={5}
-                                        max={50}
+                                        min={10}
+                                        max={100}
                                         step={5}
                                         value={[savingPercent]}
                                         onValueChange={handleSliderChange}
@@ -156,7 +157,8 @@ const TryItOut = () => {
                     </Form>
                 </CardContent>
             </Card>
-        </div>
+        </>
+
     )
 }
 

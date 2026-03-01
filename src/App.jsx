@@ -3,7 +3,8 @@ import LandingPage from './pages/LandingPage'
 import { Route, Routes } from 'react-router-dom'
 import { Signup } from './pages/SignUp'
 import SignIn from './pages/SignIn'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Calculator from './pages/Dashboard/Calculator'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<SignIn />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard/calculator' element={<Calculator />} />
       </Routes>
 
     </div>

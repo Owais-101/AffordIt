@@ -214,11 +214,11 @@ export function Signup({ className, ...props }) {
             </Form>
 
             {/* Right Side Image */}
-            <div className="bg-white border-l-2 relative hidden md:block bg-linear-to-r from-amber-500 via-orange-500 to-red-500">
+            <div className="bg-white border-l-2 relative lg:flex items-center hidden md:block bg-linear-to-r from-amber-500 via-orange-500 to-red-500">
 
-              <Marquee pauseOnHover className='[--duration:20s]'>
+              <Marquee pauseOnHover className='[--duration:20s] h-fit'>
                 {quotes.map((quote, idx) => (
-                  <div key={idx} className="w-77 rounded-xl  py-2 px-4 mt-44 bg-white" >
+                  <div key={idx} className="w-77 rounded-xl  py-2 px-4  bg-white" >
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-8 h-8rounded-full flex justify-center items-center">
                         <img src={quote.logo} className="object-contain" alt="" />

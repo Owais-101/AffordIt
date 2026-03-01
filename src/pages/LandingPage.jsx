@@ -13,7 +13,9 @@ const LandingPage = () => {
             <MobileNavbar />
             <HeroSection />
             <Description />
-            <TryItOut />
+            <div className='w-full bg-red-500 h-fit py-5 flex justify-center rounded-xl mb-5'>
+                <TryItOut />
+            </div>
 
         </div>
     )
