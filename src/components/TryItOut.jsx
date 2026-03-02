@@ -1,11 +1,10 @@
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Slider } from '@/components/ui/slider'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import {
     Form,
     FormControl,
@@ -13,9 +12,10 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '@/components/ui/form'
-// import { SignupForm } from './SignUpForm'
-import { Link } from 'react-router-dom'
+} from '@/components/ui/form';
+import { Link } from 'react-router-dom';
+import useAuth from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
     income: z.coerce.number().min(1, 'Income is required'),
@@ -29,7 +29,8 @@ const schema = z.object({
 const TryItOut = ({ dashboard }) => {
 
     const [result, setResult] = useState(null);
-
+    const navigate = useNavigate();
+    const user = useAuth()
 
     const form = useForm({
         resolver: zodResolver(schema),
@@ -48,10 +49,14 @@ const TryItOut = ({ dashboard }) => {
         setResult({ canAfford, disposable, itemPrice: data.itemPrice });
     }
 
+    const handleAddToTracker = () => {
+        user ? navigate('/dashboard') : navigate('/signup')
+    }
+
     return (
 
         <>
-            <Card className={`max-w-md w-[90%] `}>
+            <Card className={`max-w-md w-full`}>
                 <CardHeader>
                     {dashboard
                         ?
@@ -128,11 +133,10 @@ const TryItOut = ({ dashboard }) => {
                             )}
 
                             {result && !result.canAfford && Number(itemPrice) > result.disposable
-                                ? <Link to={'/dashboard/calculator'} >
-                                    <Button type='submit' variant='primaryBtn' className='w-full'>
-                                        Add Item to Tracker
-                                    </Button>
-                                </Link>
+                                ?
+                                <Button onClick={handleAddToTracker} type='submit' variant='primaryBtn' className='w-full'>
+                                    Add Item to Tracker
+                                </Button>
                                 : <Button type='submit' variant='primaryBtn' className='w-full'>
                                     Check Affordability
                                 </Button>

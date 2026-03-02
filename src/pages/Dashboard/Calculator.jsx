@@ -31,7 +31,7 @@ const Dashboard = () => {
             <BudgetRulePresets />
           </div>
 
-          <div className='w-full bg-amber-200 h-96 mt-7' >
+          <div className='w-full h-96 mt-5' >
             <YourGoals />
           </div>
 
