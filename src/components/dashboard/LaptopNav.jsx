@@ -1,6 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { BarChart2, Calculator, LayoutDashboard, Settings, Target } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Button } from '@/components/ui/button';
+import { BarChart2, Calculator, LayoutDashboard, Settings, Target } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/images/logo.png'
 
 const LaptopNav = () => {
 
@@ -17,27 +18,14 @@ const LaptopNav = () => {
     return (
         <div>
             <div>
-                <div className=' flex items-center gap-2 pt-5'>
-                    <div className='w-8 h-8 bg-brand rounded-full' >
-                        {/* image */}
-                    </div>
-                    <div>
-                        <h1 className='text-brand font-heading text-2xl' > AffordIt</h1>
-                    </div>
-                </div>
-                <p className='text-sm  ml-10 text-black/70 '>Your affordablity Calculator</p>
-
-                <div className='w-full border mt-3 mb-10' >
-
-                </div>
-
+                <h1 className='font-heading text-2xl text-center my-5 text-brand' >Welcome👋</h1>
+                <div className='w-full border mb-10' ></div>
             </div>
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 '>
                 {navItems.map((item, idx) => (
                     <Link to={item.path}>
-                        <div key={idx} className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer transition-all duration-200 border
-              ${item.path === pathname ? 'bg-[#ff832320] border-0 text-brand' : 'border-0 text-black/70'}
-              `}>
+                        <div key={idx} className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer transition-all duration-200 border hover:bg-[#ff832320] hover:text-brand
+                            ${item.path === pathname ? 'bg-[#ff832320] border-0 text-brand' : 'border-0 text-black/70'}`}>
                             <item.icon size={18} />
                             <p className='text-md '>{item.label}</p>
                         </div>

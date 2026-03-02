@@ -15,7 +15,7 @@ const MobileNav = () => {
     ]
 
     return (
-        <div className='lg:hidden bg-white backdrop-blur-md  mx-3 my-2 rounded-xl border-0 font-sans flex md:justify-center  py-3 px-4 overflow-x-auto gap-3 md:gap-5' 
+        <div className='lg:hidden bg-white backdrop-blur-md border-2 border-brand mx-3 md:mx-5 my-2 rounded-xl font-sans flex md:justify-center  py-3 px-4 overflow-x-auto gap-3 md:gap-5' 
         style={{ scrollbarWidth: 'none' }}>
             {navItems.map((item, idx) => {
                 const Icon = item.icon

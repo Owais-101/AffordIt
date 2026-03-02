@@ -8,9 +8,9 @@ import { auth } from '@/lib/firebase';
 import { useNavigate } from 'react-router-dom';
 
 
-const Navbar = () => {
+const Navbar = ({ border = false }) => {
   const [scrolled, setScrolled] = useState(false);
-  const user = useAuth();
+  const { user, loading } = useAuth();
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (error) {
       console.warn(error)
     }
@@ -39,7 +39,7 @@ const Navbar = () => {
     <nav className={`sticky top-0 z-50 justify-between items-center px-10 md:px-5 py-4 hidden md:flex transition-all duration-300
       ${scrolled
         ? 'bg-white/60 backdrop-blur-lg border-b border-white/10 shadow-lg rounded-br-xl rounded-bl-xl'
-        : 'bg-transparent border-b'
+        : `bg-transparent ${border ? 'border-b' : ''}`
       }`}>
       <div className='flex items-center gap-2'>
 
@@ -47,13 +47,13 @@ const Navbar = () => {
           <div className='h-8 w-8 flex items-center justify-center'>
             <img src={logo} className='object-contain' alt="" />
           </div>
-          <h1 className='font-heading text-xl font-bold'>AffordIt</h1>
+          <h1 className='font-heading text-xl font-bold hover:text-brand transition-colors'>AffordIt</h1>
         </Link>
 
         <div className='text-sm font-sans flex gap-5 text-black/70 md:ml-5 lg:ml-14'>
           {user
             ?
-            <Link to="/showcase" className="hover:text-black transition-colors">Dashboard</Link>
+            <Link to="/dashboard" className="hover:text-black transition-colors">Dashboard</Link>
             :
             <Link to="/" className="hover:text-black transition-colors">Home</Link>
           }

@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../ui/input'
-import { Info, NotebookTabs } from 'lucide-react'
+import { Banknote, Info, NotebookTabs } from 'lucide-react'
 
 const schema = z.object({
     itemName: z.string().min(1, "field cant be empty").max(20, "Length exceeding"),
@@ -17,9 +17,10 @@ const schema = z.object({
     path: ['monthlyExpenses']
 })
 
-const BasicDetails = ({ onSubmit: onFormSubmit }) => {
+const BasicDetails = () => {
 
-    const [result, setResult] = useState(null)
+    const [result, setResult] = useState(null);
+
 
     const form = useForm({
         resolver: zodResolver(schema),
@@ -31,11 +32,18 @@ const BasicDetails = ({ onSubmit: onFormSubmit }) => {
         },
     })
 
+    // For realtime calculation of Disposable Income
+    const monthlyIncome = form.watch('monthlyIncome')
+    const monthlyExpenses = form.watch('monthlyExpenses')
+    const disposableIncome = monthlyIncome && monthlyExpenses
+        ? monthlyIncome - monthlyExpenses
+        : 0
+
+
     const onSubmit = (data) => {
         const disposableIncome = data.monthlyIncome - data.monthlyExpenses
         const canAfford = data.itemPrice <= disposableIncome
         setResult({ disposableIncome, canAfford })
-        if (onFormSubmit) onFormSubmit({ ...data, disposableIncome, canAfford })
     }
 
     return (
@@ -124,6 +132,10 @@ const BasicDetails = ({ onSubmit: onFormSubmit }) => {
             </CardContent>
 
             <div className='flex-col mt-10 pl-5' >
+                <div className='flex gap-2 mb-2 '>
+                    <Banknote size={17} />
+                    <p className='text-sm md:text-md text-muted-foreground'>Disposable Income - <span className='text-sm text-black'>₹ {disposableIncome  ? disposableIncome : "..."}</span></p>
+                </div>
                 <div className='flex items-center gap-2 mb-2'>
                     <Info size={17} />
                     <p className='text-muted-foreground text-sm md:text-md ' > Disposable income = (Monthly income - Monthly expenses) </p>

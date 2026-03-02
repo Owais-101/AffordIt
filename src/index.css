@@ -31,6 +31,25 @@
   }
 }
 
+/* index.css */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #de7728;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #ff8323;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

@@ -46,7 +46,7 @@ const SignIn = () => {
     const handleGoogle = async () => {
         try {
             await signInWithGoogle()
-            navigate('/dashboard')
+            navigate('/dashboard' , {replace:true})
         } catch (error) {
             setError('Google sign in failed, please try again');
             console.warn(error)
