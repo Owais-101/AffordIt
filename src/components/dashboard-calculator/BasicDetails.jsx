@@ -142,7 +142,7 @@ const BasicDetails = () => {
                 </div>
                 <div className='flex items-center gap-2'>
                     <Info size={17} />
-                    <p className='text-muted-foreground text-sm md:text-md ' > Savings rate will be calculated upon your Disposable income. </p>
+                    <p className='text-muted-foreground text-sm md:text-md ' > Saving rate will be calculated from your Disposable income. </p>
                 </div>
             </div>
         </Card>

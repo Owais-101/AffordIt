@@ -1,5 +1,6 @@
 import BasicDetails from '@/components/dashboard-calculator/BasicDetails';
 import { BudgetRulePresets } from '@/components/dashboard-calculator/BudgetRule';
+import Motive from '@/components/dashboard-calculator/Motive';
 import YourGoals from '@/components/dashboard-calculator/YourGoals';
 import LaptopNav from '@/components/dashboard/LaptopNav';
 import MobileNav from '@/components/dashboard/MobileNav';
@@ -8,16 +9,12 @@ import Navbar from '@/components/Navbar';
 
 
 const Dashboard = () => {
-
-
   return (
-
     <>
-
       <div className='h-screen flex flex-col hero-bg'>
 
         <div className='container mx-auto border-l-2 border-r-2 border-b-2 border-brand  bg-white rounded-b-xl' >
-          <Navbar/>
+          <Navbar />
         </div>
         <MobileNavbar />
 
@@ -42,9 +39,12 @@ const Dashboard = () => {
               <BudgetRulePresets />
             </div>
 
-            <div className='w-full h-96 mt-2' >
+            <div className='w-full mt-2 lg:flex gap-2' >
               <YourGoals />
+              <Motive />
             </div>
+
+
 
 
           </div>

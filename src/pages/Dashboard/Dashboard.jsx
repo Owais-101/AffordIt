@@ -3,12 +3,13 @@ import LaptopNav from '@/components/dashboard/LaptopNav';
 import MobileNav from '@/components/dashboard/MobileNav';
 import MobileNavbar from '@/components/MobileNavbar';
 import Navbar from '@/components/Navbar';
-import TryItOut from '@/components/TryItOut';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import useAuth from '@/hooks/useAuth';
 import { Skeleton } from '@/components/ui/skeleton';
+import StatsCards from '@/components/dashboard/StatsCards';
+import RecentCalculatiobns from '@/components/dashboard/RecentCalculatiobns';
 
 
 
@@ -24,7 +25,7 @@ const Dashboard = () => {
     <>
       <div className='h-screen flex flex-col hero-bg'>
 
-        <div className= '  container mx-auto border-l-2 border-r-2 border-b-2 border-brand  bg-white  rounded-b-xl' >
+        <div className='container mx-auto border-l-2 border-r-2 border-b-2 border-brand  bg-white  rounded-b-xl' >
           <Navbar border={false} />
         </div>
 
@@ -68,11 +69,17 @@ const Dashboard = () => {
                 </>)
               }
 
+
               <div>
                 <Link to={'/dashboard/calculator'}>
                   <Button variant='primaryBtn' className='lg:h-12 md:h-11 mt-5 md:mt-0 mx-auto  rounded-full flex items-center'> <Plus /> Add a New Item</Button>
                 </Link>
               </div>
+            </div>
+            <StatsCards />
+
+            <div className='mt-5'>
+              <RecentCalculatiobns />
             </div>
 
           </div>
