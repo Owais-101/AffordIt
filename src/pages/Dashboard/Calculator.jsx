@@ -14,9 +14,9 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Form } from "@/components/ui/form";
 
-import { doc, setDoc } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
   itemName: z.string().min(1, "Field can't be empty").max(20).regex(/^[A-Za-z\s]+$/, "Only letters are allowed"),
@@ -38,6 +38,8 @@ const schema = z.object({
 
 const Calculator = () => {
 
+  const navigate = useNavigate()
+
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -55,21 +57,20 @@ const Calculator = () => {
     },
   })
 
+  const { addItem } = useItems();
+
   const onSubmit = async (data) => {
     const user = auth.currentUser;
-    if (!user) {
-      console.error("user not available")
-      return;
-    }
 
     try {
-      await addDoc(collection(db, "users", user.uid, "items"), data);
+      const docRef = await addDoc(collection(db, "users", user.uid, "items"), data);
+      addItem({ id: docRef.id, ...data }); 
       form.reset();
+      navigate('/dashboard/goals');
     } catch (error) {
       console.error("Error saving:", error);
     }
   };
-
   return (
     <div className='h-screen flex flex-col hero-bg'>
 

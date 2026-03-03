@@ -6,6 +6,7 @@ import SignIn from './pages/SignIn'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Calculator from './pages/Dashboard/Calculator'
 import ProtectedRoutes from './components/ProtectedRoutes'
+import Goals from './pages/Dashboard/Goals'
 
 const App = () => {
   return (
@@ -13,13 +14,18 @@ const App = () => {
 
       <Routes>
         <Route path='/' element={<LandingPage />} />
+
         <Route path='/signup' element={<Signup />} />
+
         <Route path='/login' element={<SignIn />} />
+
         <Route path='/dashboard' element={
           <ProtectedRoutes>
             <Dashboard />
           </ProtectedRoutes>
         } />
+
+        <Route path='/dashboard/goals' element={<Goals />} />
 
         <Route path='/dashboard/calculator' element={<Calculator />} />
       </Routes>
