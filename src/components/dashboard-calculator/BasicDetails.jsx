@@ -119,7 +119,7 @@ const BasicDetails = () => {
                 <div className='flex gap-2 mb-2'>
                     <Banknote size={17} />
                     <p className='text-sm md:text-md text-muted-foreground'>
-                        Disposable Income -
+                        Disposable Income : &nbsp;
                         <span className='text-sm text-black'>
                             ₹ {disposableIncome ? disposableIncome : "..."}
                         </span>
@@ -129,16 +129,11 @@ const BasicDetails = () => {
                 <div className='flex items-center gap-2 mb-2'>
                     <Info size={17} />
                     <p className='text-muted-foreground text-sm md:text-md'>
-                        Disposable income = (Monthly income - Monthly expenses)
+                        Disposable income : (Monthly income - Monthly expenses)
                     </p>
                 </div>
 
-                <div className='flex items-center gap-2'>
-                    <Info size={17} />
-                    <p className='text-muted-foreground text-sm md:text-md'>
-                        Saving rate will be calculated from your Disposable income.
-                    </p>
-                </div>
+                
             </div>
 
         </Card>

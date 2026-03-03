@@ -1,23 +1,23 @@
 import { cn } from "@/lib/utils";
-import { Scale } from "lucide-react";
+import { Info, Scale } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 
 const rules = [
   {
-    id: "50-30-20",
-    name: "50 / 30 / 20",
-    detail: "50% Needs, 30% Wants, 20% Savings",
+    id: "20",
+    name: "Twenty",
+    detail: "20% of my Disposable income",
     popular: true,
   },
   {
-    id: "60-20-20",
-    name: "60 / 20 / 20",
-    detail: "60% Needs, 20% Wants, 20% Savings",
+    id: "40",
+    name: "Fourty",
+    detail: "40% of my Disposable income",
   },
   {
-    id: "70-20-10",
-    name: "70 / 20 / 10",
-    detail: "70% Needs, 20% Wants, 10% Savings",
+    id: "60",
+    name: "Sixty",
+    detail: "60% of my Disposable income",
   },
 ]
 
@@ -26,7 +26,7 @@ export function BudgetRule() {
   const { setValue, watch } = useFormContext();
 
   const selected = watch("budgetRule");
-  
+
   const handleSelect = (rule) => {
     if (selected === rule.id) {
       setValue("budgetRule", undefined)
@@ -93,6 +93,13 @@ export function BudgetRule() {
             </div>
           </button>
         ))}
+
+        <div className='flex items-center gap-2 mt-5'>
+          <Info size={17} />
+          <p className='text-muted-foreground text-sm md:text-md'>
+            Optional (100% Disposable income if left unselect)
+          </p>
+        </div>
       </div>
     </div>
   )

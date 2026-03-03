@@ -25,7 +25,7 @@ const MobileNavbar = () => {
       <nav className={`sticky top-0 z-50 flex items-center justify-between py-3 px-8 md:hidden border-b
         ${scrolled
           ? 'bg-white/60 backdrop-blur-lg border-white/10 shadow-lg rounded-br-xl rounded-bl-xl'
-          : 'bg-transparent'
+          : 'bg-white'
         }`}>
         <div className='flex items-center gap-2'>
           <div className='h-8 w-8 flex items-center justify-center'>

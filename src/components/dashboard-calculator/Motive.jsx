@@ -32,7 +32,7 @@ const Motive = () => {
                     <FormItem>
                         <FormControl>
                             <Textarea
-                                className='h-52 border-brand'
+                                className='h-40 border-brand'
                                 placeholder='Type your reason here'
                                 maxLength={100}
                                 {...field}
