@@ -12,7 +12,6 @@ const LaptopNav = () => {
         { label: 'Calculator', icon: Calculator, path: '/dashboard/calculator' },
         { label: 'Goals', icon: Target, path: '/dashboard/goals' },
         { label: 'Analytics', icon: BarChart2, path: '/dashboard/analytics' },
-        { label: 'Settings', icon: Settings, path: '/dashboard/settings' },
     ]
 
     return (
@@ -32,7 +31,6 @@ const LaptopNav = () => {
                     </Link>
                 ))}
             </div>
-            <Button variant='primaryBtn' className='w-full mt-20'>Log out</Button>
         </div>
 
 

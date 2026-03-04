@@ -60,7 +60,7 @@ const TryItOut = ({ dashboard }) => {
                 <CardHeader>
                     {dashboard
                         ?
-                        <h1 className='text-xl text-brand text-center font-semibold border-b pb-1' >Check or Add your item</h1>
+                        <h1 className='text-xl text-brand text-center font-semibold border-b pb-1'>Check or Add your item</h1>
                         :
                         <>
                             <h1 className='text-center font-sans font-bold text-md lg:text-2xl text-brand'>Try It Out</h1>
@@ -80,7 +80,7 @@ const TryItOut = ({ dashboard }) => {
                                 name='income'
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Monthly Income (₹)</FormLabel>
+                                        <FormLabel>Monthly Income ₹</FormLabel>
                                         <FormControl>
                                             <Input type='number' placeholder='e.g. 3000' {...field} />
                                         </FormControl>
@@ -94,7 +94,7 @@ const TryItOut = ({ dashboard }) => {
                                 name='expenses'
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Monthly Expenses (₹)</FormLabel>
+                                        <FormLabel>Monthly Expenses ₹</FormLabel>
                                         <FormControl>
                                             <Input type='number' placeholder='e.g. 1500' {...field} />
                                         </FormControl>
@@ -108,7 +108,7 @@ const TryItOut = ({ dashboard }) => {
                                 name='itemPrice'
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Item Price (₹)</FormLabel>
+                                        <FormLabel>Item Price ₹</FormLabel>
                                         <FormControl>
                                             <Input type='number' placeholder='e.g. 500' {...field} />
                                         </FormControl>

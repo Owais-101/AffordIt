@@ -21,6 +21,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import MobileNavbar from "@/components/MobileNavbar";
 import { Marquee } from "@/components/shadcn-space/animations/marquee";
+import Footer from "@/components/Footer";
 
 
 
@@ -241,7 +242,13 @@ export function Signup({ className, ...props }) {
           and{" "}
           <a href="#" className="underline underline-offset-4 hover:text-primary">Privacy Policy</a>.
         </p>
+
+        <div>
+        <Footer />
       </div>
+      </div>
+
+      
     </>
   )
 }

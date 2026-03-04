@@ -1,4 +1,4 @@
-import { LayoutDashboard, Menu, TableOfContents, X } from 'lucide-react';
+import { Cookie, LayoutDashboard, Menu, ReceiptText, TableOfContents, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from "motion/react";
 import { Link } from 'react-router-dom';
@@ -51,22 +51,23 @@ const MobileNavbar = () => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className='fixed top-14.25 left-0 right-0 z-60 bg-white/70 backdrop-blur-sm flex flex-col gap-3 py-5 px-8 border-b rounded-br-xl rounded-bl-xl font-sans md:hidden'>
 
-            <Link to='/showcase' className='flex gap-2 items-center'>
-              <LayoutDashboard color="#de7728" size={19} /> Showcase
-            </Link>
-            <Link to='/docs' className='flex gap-2 items-center'>
-              <TableOfContents color="#de7728" size={19} /> Documentation
+            <Link to='/dashboard' className='flex gap-2 items-center'>
+              <LayoutDashboard color="#de7728" size={19} /> Dashboard
             </Link>
             <Link to='/faq' className='flex gap-2 items-center'>
-              <LayoutDashboard color="#de7728" size={19} /> FAQ
+              <TableOfContents color="#de7728" size={19} /> FAQ
+            </Link>
+            <Link to='/terms' className='flex gap-2 items-center'>
+              <ReceiptText color="#de7728" size={19} /> Terms and Conditions
             </Link>
             <Link to='/privacy' className='flex gap-2 items-center'>
-              <LayoutDashboard color="#de7728" size={19} /> Privacy Policy
+              <Cookie color="#de7728" size={19} /> Privacy Policy
             </Link>
 
             <div className='mt-5 flex gap-3'>
-              <Button variant='outline' size='sm'>Sign Up</Button>
-              <Button variant='primaryBtn' size='sm'>Sign In</Button>
+              <Link to='signup'><Button variant='outline' size='sm'>Sign Up</Button></Link>
+              <Link to='login'><Button variant='primaryBtn' size='sm'>Sign In</Button></Link>
+
             </div>
 
           </motion.div>

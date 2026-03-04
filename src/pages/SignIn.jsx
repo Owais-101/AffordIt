@@ -8,6 +8,8 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Form, FormControl, FormField, FormLabel, FormItem, FormMessage } from '../components/ui/form'
 import { Input } from '../components/ui/input'
 import { Button } from '../components/ui/button'
+import { LogIn } from 'lucide-react'
+import Footer from '@/components/Footer'
 
 const schema = z.object({
     email: z.string().email('Invalid email'),
@@ -46,7 +48,7 @@ const SignIn = () => {
     const handleGoogle = async () => {
         try {
             await signInWithGoogle()
-            navigate('/dashboard' , {replace:true})
+            navigate('/dashboard', { replace: true })
         } catch (error) {
             setError('Google sign in failed, please try again');
             console.warn(error)
@@ -155,6 +157,9 @@ const SignIn = () => {
 
                     </form>
                 </Form>
+                <div className='mt-5'>
+                    <Footer />
+                </div>
             </div>
         </div>
     )

@@ -57,9 +57,9 @@ const Navbar = ({ border = false }) => {
             :
             <Link to="/" className="hover:text-black transition-colors">Home</Link>
           }
-          <Link to="/docs" className="hover:text-black transition-colors">FAQ</Link>
-          <Link to="/faq" className="hover:text-black transition-colors">Terms and Conditions</Link>
-          <Link to="/privacy" className="hover:text-black transition-colors">Privacy Policy</Link>
+          <Link to='/faq' target='_blank' rel='noreferrer' className="hover:text-black transition-colors">FAQ</Link>
+          <Link to='/terms' target='_blank' rel='noreferrer' className="hover:text-black transition-colors">Terms and Conditions</Link>
+          <Link to='/privacy' target='_blank' rel='noreferrer' className="hover:text-black transition-colors">Privacy Policy</Link>
         </div>
       </div>
 

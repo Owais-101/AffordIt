@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/button';
-import notebook from '../assets/images/notebook.webp'
+import notebook from '../assets/images/test.png'
 import { motion } from 'motion/react';
 
 const HeroSection = () => {
@@ -24,7 +24,7 @@ const HeroSection = () => {
                 duration:0.5,
                 ease:'linear'
             }}
-            className='absolute left-35 top-45 lg:left-100 lg:top-70 md:left-60 md:top-55 lg:hover:top-60 transition-all' src={notebook} alt="" />
+            className='absolute left-35 top-45 lg:left-100 lg:top-70 md:left-60 md:top-55 lg:hover:top-65 transition-all border-2 border-brand rounded-xl' src={notebook} alt="" />
 
         </div>
     )

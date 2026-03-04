@@ -85,7 +85,7 @@ const YourGoals = () => {
       )}
 
       {/* Target Price */}
-      <p className='text-sm font-medium mt-10'>Target Price</p>
+      <p className='text-sm font-medium mt-10'>Target Price ₹</p>
 
       <FormField
         control={control}

@@ -7,6 +7,10 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Calculator from './pages/Dashboard/Calculator'
 import ProtectedRoutes from './components/ProtectedRoutes'
 import Goals from './pages/Dashboard/Goals'
+import { FaqAccordion } from './components/Accordian'
+import TermsAndConditions from './pages/TermsAndConditions'
+import PrivacyAndPolicy from './pages/PrivacyAndPolicy'
+import Analytics from './pages/Analytics'
 
 const App = () => {
   return (
@@ -24,10 +28,24 @@ const App = () => {
             <Dashboard />
           </ProtectedRoutes>
         } />
+        <Route path='/dashboard/goals' element={
+          <ProtectedRoutes>
+            <Goals />
+          </ProtectedRoutes>
+        } />
+        <Route path='/dashboard/calculator' element={
+          <ProtectedRoutes>
+            <Calculator />
+          </ProtectedRoutes>
+        } />
 
-        <Route path='/dashboard/goals' element={<Goals />} />
+        <Route path='/faq' element={<FaqAccordion />} />
 
-        <Route path='/dashboard/calculator' element={<Calculator />} />
+        <Route path='/terms' element={<TermsAndConditions />} />
+
+        <Route path='/privacy' element={<PrivacyAndPolicy />} />
+        <Route path='/dashboard/analytics' element={<Analytics />} />
+
       </Routes>
 
     </div>

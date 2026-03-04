@@ -59,7 +59,7 @@ const BasicDetails = () => {
                         name='itemPrice'
                         render={({ field }) => (
                             <FormItem className='w-1/2'>
-                                <FormLabel>Price of the item</FormLabel>
+                                <FormLabel>Price of the item ₹</FormLabel>
                                 <FormControl>
                                     <Input
                                         type='number'
@@ -80,7 +80,7 @@ const BasicDetails = () => {
                         name='monthlyIncome'
                         render={({ field }) => (
                             <FormItem className='w-1/2'>
-                                <FormLabel>Monthly Income</FormLabel>
+                                <FormLabel>Monthly Income ₹</FormLabel>
                                 <FormControl>
                                     <Input
                                         type='number'
@@ -98,7 +98,7 @@ const BasicDetails = () => {
                         name='monthlyExpenses'
                         render={({ field }) => (
                             <FormItem className='w-1/2'>
-                                <FormLabel>Monthly expenses</FormLabel>
+                                <FormLabel>Monthly expenses ₹</FormLabel>
                                 <FormControl>
                                     <Input
                                         type='number'

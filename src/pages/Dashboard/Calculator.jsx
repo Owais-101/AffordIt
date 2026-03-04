@@ -19,7 +19,7 @@ import { useItems } from '@/context/ItemsContext';
 const schema = z.object({
   itemName: z.string().min(1, "Field can't be empty").max(20).regex(/^[A-Za-z\s]+$/, "Only letters are allowed"),
   itemPrice: z.coerce.number().min(1, 'field cannot be empty').max(10000000000, 'value cannot be more than this'),
-  monthlyIncome: z.coerce.number().min(1, 'field cannot be empty').max(10000000,'income cannot be more than this'),
+  monthlyIncome: z.coerce.number().min(1, 'field cannot be empty').max(10000000, 'income cannot be more than this'),
   monthlyExpenses: z.coerce.number().min(1, 'field cannot be empty').max(100000, 'expenses cannot be more than this'),
   targetPrice: z.coerce.number().min(1, "field cannot be empty").max(10000000000, 'value cannot be more than this'),
   goalCategory: z.string().min(1, "Please select a category"),
@@ -52,24 +52,27 @@ const Calculator = () => {
 
   const { addItem } = useItems()
 
+  // Calculator onSubmit
   const onSubmit = async (data) => {
-    const user = auth.currentUser
-    if (!user) {
-      console.error("User not logged in")
-      navigate('/login')
-      return
-    }
+    const user = auth.currentUser;
+    if (!user) return
+
+    const disposableIncome = data.monthlyIncome - data.monthlyExpenses;
+    const monthlySavings = disposableIncome * (data.savingRate / 100);
+    const totalMonths = Math.ceil(data.targetPrice / monthlySavings);
 
     try {
-      const docRef = await addDoc(collection(db, "users", user.uid, "items"), {
+      await addItem({
         ...data,
         createdAt: serverTimestamp(),
+        savedAmount: 0,
+        itemCompleted: false,
+        monthsRemaining: totalMonths,
       })
-      addItem({ id: docRef.id, ...data, createdAt: new Date() })
       form.reset()
       navigate('/dashboard/goals')
     } catch (error) {
-      console.error("Error saving:", error)
+      console.error(error)
     }
   }
 
